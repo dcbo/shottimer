@@ -53,11 +53,10 @@ v2.1 rev 001 - Complete code rewritten, baristalight still missing
 */
 
 
-#define VERSION_MAJOR                 2
-#define VERSION_MINOR                 1
-#define VERSION_REVISION              4
+#define VER_MAJOR                 2
+#define VER_MINOR                 1
+#define VER_REVISION              4
 
-#define SVN_REVISION                  "$Revision: 465 $"
 // $Id: Shottimer.ino 465 2016-10-30 20:51:42Z dario $ 
 // $Author: dario $
 // $Date: 2016-10-30 21:51:42 +0100 (So, 30. Okt 2016) $
@@ -258,14 +257,13 @@ void showStartScreen(void){
     lcd.setCursor(5, 3);    
     lcd.print(F("Shot Timer"));
     lcd.setFontSize(FONT_SIZE_SMALL);
-    lcd.setCursor(60, 7);    
+    lcd.setCursor(40, 7);    
     lcd.print(F("v "));
-    lcd.print(VERSION_MAJOR);
+    lcd.print(VER_MAJOR);
     lcd.print(F("."));
-    lcd.print(VERSION_MINOR);
-    lcd.print(F(" rev "));
-    //lcd.print(VERSION_REVISION);
-    lcd.print(SVN_REVISION);
+    lcd.print(VER_MINOR);
+    lcd.print(F(" rev "));    
+    lcd.print(VER_REVISION);
     g_displaymode = DSP_STARTSCREEN;
     g_start_screen_update = millis();  
 }
@@ -288,6 +286,7 @@ void switch_barista_led(boolean state){
         #endif
     }
 }
+
 // control barista PWM
 void switch_barista_pwm(byte value){
     Serial.print(F("PWM:"));   
@@ -334,6 +333,7 @@ boolean isTempSensorOnline(void){
 }
 
 // show shottime in 7-segment style
+// value: time to be displayed [100ms]
 void displaytime(int value) {
     byte digit;
     if (value > 999) {
@@ -347,15 +347,15 @@ void displaytime(int value) {
         }
     } else {
         g_last_display_overflow = false;
-        lcd.setCursor(25, 2);
+        lcd.setCursor(25, 1);
         digit = value / 100;
         lcd.draw(seven_seg[digit], 32, 48);
-        lcd.setCursor(61, 2);
+        lcd.setCursor(61, 1);
         digit = value / 10 % 10;
         lcd.draw(seven_seg[digit], 32, 48);  
-        lcd.setCursor(94, 6);
+        lcd.setCursor(94, 5);
         lcd.print(".");
-        lcd.setCursor(104, 6);
+        lcd.setCursor(104, 5);
         digit = value % 10;
         lcd.print(digit);
     }
@@ -506,7 +506,7 @@ void loop() {
     // - barista lights are on
     // - timer is not running
     if (!switch_act && !pump_act && g_led_on){
-        if ( ((millis() - g_pump_stoped_at) > BARISTA_DELAY) && ((millis() - g_pump_stoped_at) > BARISTA_DELAY) ) {
+        if ( ((millis() - g_pump_stoped_at) > BARISTA_DELAY) && ((millis() - g_switch_stoped_at) > BARISTA_DELAY) ) {
             g_led_on = false;                        
             switch_barista_led(g_led_on);
             g_pwm_setpoint = 0;            

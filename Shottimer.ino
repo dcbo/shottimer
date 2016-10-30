@@ -52,16 +52,6 @@ v2.1 rev 001 - Complete code rewritten, baristalight still missing
   - Wire                                - part of Arduino installation
 */
 
-
-#define VER_MAJOR                 2
-#define VER_MINOR                 1
-#define VER_REVISION              4
-
-// $Id: Shottimer.ino 465 2016-10-30 20:51:42Z dario $ 
-// $Author: dario $
-// $Date: 2016-10-30 21:51:42 +0100 (So, 30. Okt 2016) $
- 
-
 // ############################################################################
 // libraries
 // ############################################################################
@@ -96,6 +86,13 @@ v2.1 rev 001 - Complete code rewritten, baristalight still missing
 #define BARISTA_PWM_DELAY_DOWN       50  // ms for each pwm step when powering down
 #define BARISTA_DELAY             10000  // ms timeout for bartista lights7
 
+
+// ############################################################################
+// curent version
+// ############################################################################
+#define VER_MAJOR                 2
+#define VER_MINOR                 1
+#define VER_REVISION              4
 
 
 // ############################################################################
@@ -217,7 +214,7 @@ const PROGMEM uint8_t degree[] = {
 
 
 // ############################################################################
-// Global Vars
+// global vars
 // ############################################################################
 Bounce g_bounce_switch = Bounce();      // debouncing Start Button
 Bounce g_bounce_pump   = Bounce();      // debouncing Pump Optocoupler
@@ -248,6 +245,9 @@ float         g_temp_value;                  // result of temperature conversion
 float         g_temp_value_last;             // result of last temperature conversion in degree
    
 
+// ############################################################################
+// functions
+// ############################################################################
 // Show Startscreen 
 void showStartScreen(void){
     lcd.clear();
@@ -362,7 +362,9 @@ void displaytime(int value) {
 }
 
 
-// setup system
+// ############################################################################
+// setup
+// ############################################################################
 void setup() {
     // Setup Serial
     Serial.begin(19200);
@@ -432,7 +434,9 @@ void setup() {
 }
 
 
+// ############################################################################
 // main loop
+// ############################################################################
 void loop() {
     boolean               pump_act;
     boolean               switch_act; 
@@ -618,7 +622,5 @@ void loop() {
             g_temp_conversion_running = true;
         }
     }
-    
-  
 }
   

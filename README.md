@@ -8,7 +8,7 @@
 by  Dario Carluucio (user dondario of http://www.kaffee-netz.de )
 
 based on idea and hardware from 
-- David Kißling (user mactree of http://www.kaffee-netz.de )
+ - David Kißling (user mactree of http://www.kaffee-netz.de )
  
 
 ## todo
@@ -20,9 +20,9 @@ based on idea and hardware from
 - [x] add barista light control 
 
 ## changelog
-v2.1 rev 002 - baristalight added with many configuration options 
-                (pin configuration, polatity high/low active, pwm speed on/off, timeout)
-v2.1 rev 001 - Complete code rewritten, baristalight still missing
+- v2.1 rev 002 - baristalight added with many configuration options
+  (pin configuration, polatity high/low active, pwm speed on/off, timeout)                
+- v2.1 rev 001 - Complete code rewritten, baristalight still missing
 
 ## connections
   - OLED display

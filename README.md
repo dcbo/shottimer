@@ -1,4 +1,4 @@
-espresso shot timer 
+# espresso shot timer 
 
 ## features
  - 7-Seg style graphic output on I2C-OLED display

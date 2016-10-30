@@ -55,10 +55,12 @@ v2.1 rev 001 - Complete code rewritten, baristalight still missing
 
 #define VERSION_MAJOR                 2
 #define VERSION_MINOR                 1
-#define SVN_REVISION                  $Revision: 465 $ 
-#define SVN_ID                        $Id: Shottimer.ino 465 2016-10-30 20:51:42Z dario $ 
-#define SVN_AUTHOR                    $Author: dario $
-#define SVN_DATE                      $Date: 2016-10-30 21:51:42 +0100 (So, 30. Okt 2016) $
+#define VERSION_REVISION              4
+
+#define SVN_REVISION                  "$Revision: 465 $"
+// $Id: Shottimer.ino 465 2016-10-30 20:51:42Z dario $ 
+// $Author: dario $
+// $Date: 2016-10-30 21:51:42 +0100 (So, 30. Okt 2016) $
  
 
 // ############################################################################
@@ -247,33 +249,23 @@ float         g_temp_value;                  // result of temperature conversion
 float         g_temp_value_last;             // result of last temperature conversion in degree
    
 
-// char* version[] ={"Espresso", "Shot Timer", "v2.001.002"}; 
-
-
-// dirty hack to convert svn-revision to integer value
-#define $Revision     (false?1
-#define $             +0)
-int codeRevision() { return $Revision: 465 $; }
-
 // Show Startscreen 
 void showStartScreen(void){
     lcd.clear();
     lcd.setFontSize(FONT_SIZE_MEDIUM);
-    lcd.setCursor(5, 0);
-    // lcd.print(version[0]);
-    lcd.print(F("Espresso");
-    lcd.setCursor(5, 3);
-    // lcd.print(version[1]);
-    lcd.print(F("Shot Timer");
+    lcd.setCursor(5, 0);    
+    lcd.print(F("Espresso"));
+    lcd.setCursor(5, 3);    
+    lcd.print(F("Shot Timer"));
     lcd.setFontSize(FONT_SIZE_SMALL);
-    lcd.setCursor(60, 7);
-    // lcd.print(version[2]);
-    lcd.print(F("v");
+    lcd.setCursor(60, 7);    
+    lcd.print(F("v "));
     lcd.print(VERSION_MAJOR);
-    lcd.print(F(".");
+    lcd.print(F("."));
     lcd.print(VERSION_MINOR);
-    lcd.print(F(" rev ");
-    lcd.print(codeRevision());
+    lcd.print(F(" rev "));
+    //lcd.print(VERSION_REVISION);
+    lcd.print(SVN_REVISION);
     g_displaymode = DSP_STARTSCREEN;
     g_start_screen_update = millis();  
 }

@@ -15,8 +15,8 @@ based on idea and hardware from
 - [ ] change switch input to valve and measure preinfusion seperate
 - [ ] design new display output if inactive
 - [ ] store values in eeprom
-  - no. of shots [UNSIGNED LONG] (shots longer than MIN_SHOT_TIME)
-  - seconds of pump operation [UNSIGNED LONG]
+  - no. of shots longer than MIN_SHOT_TIME - UNSIGNED LONG
+  - seconds of pump operation - UNSIGNED LONG
 - [x] add barista light control 
 
 ## changelog

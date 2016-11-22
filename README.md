@@ -5,7 +5,7 @@
  - temperature display 
  - control of baristlight during shot (digital or PWM)
  
-by  Dario Carluucio (user dondario of http://www.kaffee-netz.de )
+by  Dario Carluccio (user dondario of http://www.kaffee-netz.de) <shottimer.at.carluccio.de>
 
 based on idea and hardware from 
  - David Kißling (user mactree of http://www.kaffee-netz.de )
